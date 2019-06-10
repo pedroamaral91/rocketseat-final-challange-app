@@ -6,16 +6,17 @@ import Home from '~/pages/Home';
 
 const Routes = createAppContainer(
   createSwitchNavigator({
+    Home,
     Login,
     Signup,
-    Logged: createStackNavigator(
-      {
-        Home,
-      },
-      {
-        headerMode: 'none',
-      },
-    ),
+    // Logged: createStackNavigator(
+    //   {
+    //     Home,
+    //   },
+    //   {
+    //     headerMode: 'none',
+    //   },
+    // ),
   }),
 );
 

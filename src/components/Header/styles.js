@@ -46,7 +46,9 @@ export const HeaderTitle = styled.Text`
   text-align: left;
 `;
 
-export const ButtomHeader = styled.TouchableOpacity`
+export const ButtomHeader = styled.TouchableOpacity.attrs({
+  activeOpacity: 0.7,
+})`
   background-color: transparent;
   justify-content: center;
   align-items: center;
@@ -54,9 +56,12 @@ export const ButtomHeader = styled.TouchableOpacity`
   margin: 0 20px;
   width: 50px;
   height: 50px;
+  z-index: 1;
 `;
 
-export const ButtomCart = styled.TouchableOpacity`
+export const ButtomCart = styled.TouchableOpacity.attrs({
+  activeOpacity: 0.7,
+})`
   background-color: #e5293e;
   width: 50px;
   height: 50px;
@@ -64,6 +69,7 @@ export const ButtomCart = styled.TouchableOpacity`
   margin: 0 20px;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 `;
 
 export const CountItems = styled.Text`
