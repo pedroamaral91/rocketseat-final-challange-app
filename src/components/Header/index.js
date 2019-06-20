@@ -12,23 +12,25 @@ import {
   ButtomCart,
   IconBadge,
   CountItems,
+  Title,
 } from './styles';
 
-const Header = ({ icon, showButtomCart }) => (
-  <Container showButtomCart={showButtomCart}>
+const Header = ({
+  title, icon, cartItems, showButtomCart, price,
+}) => (
+  <Container showButtomCart={showButtomCart} price={price}>
     <ImageHeader />
     <StatusBarColor />
     <ButtomHeader>
       <IconHeader icon={icon} />
     </ButtomHeader>
-    <Wrapper>
-      <HeaderTitle>Pizzaria Don Juan</HeaderTitle>
-    </Wrapper>
+    <HeaderTitle>{title}</HeaderTitle>
+    {!!price && <Title>{price}</Title>}
     {showButtomCart && (
       <ButtomCart>
         <IconHeader icon="shopping-bag" />
         <IconBadge>
-          <CountItems>0</CountItems>
+          <CountItems>{cartItems}</CountItems>
         </IconBadge>
       </ButtomCart>
     )}
@@ -37,11 +39,16 @@ const Header = ({ icon, showButtomCart }) => (
 
 Header.defaultProps = {
   showButtomCart: false,
+  cartItems: 0,
+  price: '',
 };
 
 Header.propTypes = {
+  title: PropTypes.string.isRequired,
   icon: PropTypes.string.isRequired,
   showButtomCart: PropTypes.bool,
+  cartItems: PropTypes.number,
+  price: PropTypes.string,
 };
 
 export default Header;

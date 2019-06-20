@@ -45,11 +45,17 @@ const tipos = [
     descricao: 'Cervejas artesanais, vinhos e destilados',
     duracao: '5 mins',
   },
+  {
+    id: Math.random(),
+    tipo: 'Bebidas alcóolicas',
+    descricao: 'Cervejas artesanais, vinhos e destilados',
+    duracao: '5 mins',
+  },
 ];
 
 const Home = () => (
   <Container>
-    <Header icon="undo" showButtomCart />
+    <Header icon="undo" title="Pizzaria Don Juan" showButtomCart />
 
     <FoodTypes
       data={tipos}

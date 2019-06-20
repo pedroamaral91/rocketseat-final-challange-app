@@ -2,23 +2,16 @@ import styled from 'styled-components/native';
 import HeaderBackground from '~/assets/header-background.png';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-export const Container = styled.View`
-  flex: 1;
-  height: 74px;
-  padding-top: 20px;
-  flex-direction: row;
-  justify-content: ${props => (props.showButtomCart ? 'space-between' : 'flex-start')};
-  align-items: baseline;
-`;
-
 export const StatusBarColor = styled.StatusBar.attrs({
   backgroundColor: '#0b2031',
 })``;
 
-export const Wrapper = styled.View`
-  height: 50px;
-
-  justify-content: center;
+export const Container = styled.View`
+  padding-top: 20px;
+  flex-direction: row;
+  justify-content: ${props => (props.showButtomCart || !!props.price ? 'space-between' : 'flex-start')};
+  align-items: baseline;
+  height: 80px;
 `;
 
 export const IconHeader = styled(Icon).attrs(props => ({
@@ -34,16 +27,17 @@ export const ImageHeader = styled.Image.attrs({
   top: 0;
   left: 0;
   width: 100%;
-  height: 185px;
 `;
 
 export const HeaderTitle = styled.Text`
   font-family: 'Helvetica-Bold';
+  align-self: center;
   font-weight: bold;
   font-size: 18px;
   color: #ffffff;
   letter-spacing: 0;
   text-align: left;
+  z-index: 1;
 `;
 
 export const ButtomHeader = styled.TouchableOpacity.attrs({
@@ -87,4 +81,14 @@ export const IconBadge = styled.View`
   background-color: #ffc107;
   align-items: center;
   justify-content: center;
+`;
+
+export const Title = styled.Text`
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  letter-spacing: 0;
+  text-align: right;
+  margin: 0 20px;
+  align-self: center;
 `;

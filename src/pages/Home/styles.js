@@ -4,15 +4,9 @@ import ImageIcon from '~/assets/Tipos/pizza.png';
 
 export const Container = styled.View`
   flex: 1;
-  background: #fff;
 `;
 
-export const FoodTypes = styled.FlatList.attrs({
-  contentContainerStyle: {
-    padding: 30,
-    marginTop: 25,
-  },
-})``;
+export const FoodTypes = styled.FlatList``;
 
 export const Image = styled.Image.attrs({
   source: ImageIcon,
@@ -27,9 +21,9 @@ export const Item = styled.TouchableOpacity`
   flex-wrap: wrap;
   align-items: center;
   padding: 10px;
-  margin-top: 20px;
+  margin: 10px 20px;
   border-radius: 6;
-  elevation: 15;
+  elevation: 3;
 `;
 
 export const Title = styled.Text`
