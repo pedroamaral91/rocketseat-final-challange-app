@@ -7,11 +7,11 @@ import Home from '~/pages/Home';
 import FoodTypes from '~/pages/FoodTypes';
 import FoodSize from '~/pages/FoodSize';
 import Cart from '~/pages/Cart';
-import MyOrders from '~/pages/MyOrders';
+import FinishOrder from '~/pages/FinishOrder';
 
 const Routes = createAppContainer(
   createSwitchNavigator({
-    MyOrders,
+    FinishOrder,
     Cart,
     FoodSize,
     Home,
