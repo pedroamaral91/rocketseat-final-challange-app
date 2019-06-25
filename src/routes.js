@@ -8,16 +8,18 @@ import FoodTypes from '~/pages/FoodTypes';
 import FoodSize from '~/pages/FoodSize';
 import Cart from '~/pages/Cart';
 import FinishOrder from '~/pages/FinishOrder';
+import MyOrders from '~/pages/MyOrders';
 
 const Routes = createAppContainer(
   createSwitchNavigator({
-    FinishOrder,
-    Cart,
-    FoodSize,
-    Home,
-    FoodTypes,
     Login,
     Signup,
+    Home,
+    FoodTypes,
+    FoodSize,
+    Cart,
+    FinishOrder,
+    MyOrders,
     // Logged: createStackNavigator(
     //   {
     //     Home,
