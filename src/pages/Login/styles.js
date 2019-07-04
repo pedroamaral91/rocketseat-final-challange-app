@@ -1,14 +1,13 @@
 import styled from 'styled-components/native';
 import LinearGradient from 'react-native-linear-gradient';
 
-import BackgroundImage from '~/assets/fundo-teste.png';
+import BackgroundImage from '~/assets/fundo.jpg';
 import logo from '~/assets/logo.png';
 
 export const Container = styled.ImageBackground.attrs({
   source: BackgroundImage,
 })`
-  width: 100%;
-  height: 100%;
+  flex: 1;
 `;
 
 export const Wrapper = styled(LinearGradient).attrs({

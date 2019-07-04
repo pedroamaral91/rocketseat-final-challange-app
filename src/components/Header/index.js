@@ -6,7 +6,6 @@ import {
   ImageHeader,
   StatusBarColor,
   ButtomHeader,
-  Wrapper,
   IconHeader,
   HeaderTitle,
   ButtomCart,

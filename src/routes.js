@@ -12,8 +12,8 @@ import MyOrders from '~/pages/MyOrders';
 
 const Routes = createAppContainer(
   createSwitchNavigator({
-    Login,
     Signup,
+    Login,
     Home,
     FoodTypes,
     FoodSize,
