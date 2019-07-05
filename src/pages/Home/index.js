@@ -1,4 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
+import PropTypes from 'prop-types';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { Creators as ProdutosCreators } from '~/store/ducks/products';
 
 import {
   Container,
@@ -13,68 +18,50 @@ import {
   WrapperTimer,
 } from './styles';
 import Header from '~/components/Header';
+import Images from '~/components/UI/Images';
 
-const tipos = [
-  {
-    id: Math.random(),
-    tipo: 'Pizzas',
-    descricao: 'Mais de 50 sabores de pizza, em até 4 tamanhos diferentes de fome.',
-    duracao: '30 mins',
-  },
-  {
-    id: Math.random(),
-    tipo: 'Massas',
-    descricao: '10 tipos de massas com diferentes molhos para te satisfazer.',
-    duracao: '25 mins',
-  },
-  {
-    id: Math.random(),
-    tipo: 'Calzones',
-    descricao: 'Calzones super recheados com mais de 50 sabores diferentes',
-    duracao: '15 mins',
-  },
-  {
-    id: Math.random(),
-    tipo: 'Bebidas não-alcóolicas',
-    descricao: 'Refrigerantes, sucos, chá gelado, energéticos e água.',
-    duracao: '5 mins',
-  },
-  {
-    id: Math.random(),
-    tipo: 'Bebidas alcóolicas',
-    descricao: 'Cervejas artesanais, vinhos e destilados',
-    duracao: '5 mins',
-  },
-  {
-    id: Math.random(),
-    tipo: 'Bebidas alcóolicas',
-    descricao: 'Cervejas artesanais, vinhos e destilados',
-    duracao: '5 mins',
-  },
-];
+function Home({ navigation }) {
+  const { products } = useSelector(state => state.products);
+  const dispatch = useDispatch();
 
-const Home = () => (
-  <Container>
-    <Header icon="undo" title="Pizzaria Don Juan" showButtomCart />
+  useEffect(() => {
+    if (products.length === 0) {
+      dispatch(ProdutosCreators.getProducts());
+    }
+  }, []);
 
-    <FoodTypes
-      data={tipos}
-      keyExtractor={tipo => String(tipo.id)}
-      renderItem={({ item }) => (
-        <Item onPress={() => {}}>
-          <Image />
-          <Info>
-            <Title>{item.tipo}</Title>
-            <Description>{item.descricao}</Description>
-            <WrapperTimer>
-              <Timer />
-              <Duration>{item.duracao}</Duration>
-            </WrapperTimer>
-          </Info>
-        </Item>
+  return (
+    <Container>
+      <Header icon="history" title="Pizzaria Don Juan" showButtomCart navigation={navigation} />
+      {products.length > 0 && (
+        <FoodTypes
+          data={products}
+          keyExtractor={product => String(product.id)}
+          renderItem={({ item }) => (
+            <Item
+              onPress={() => {
+                navigation.navigate('FoodTypes', { id: item.id });
+              }}
+            >
+              <Image source={Images[item.icon]} />
+              <Info>
+                <Title>{item.product}</Title>
+                <Description>{item.description}</Description>
+                <WrapperTimer>
+                  <Timer />
+                  <Duration>{`${item.duration} min`}</Duration>
+                </WrapperTimer>
+              </Info>
+            </Item>
+          )}
+        />
       )}
-    />
-  </Container>
-);
+    </Container>
+  );
+}
+
+Home.propTypes = {
+  navigation: PropTypes.object.isRequired,
+};
 
 export default Home;

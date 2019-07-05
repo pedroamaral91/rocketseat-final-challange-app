@@ -14,27 +14,35 @@ import {
   Title,
 } from './styles';
 
-const Header = ({
-  title, icon, cartItems, showButtomCart, price,
-}) => (
-  <Container showButtomCart={showButtomCart} price={price}>
-    <ImageHeader />
-    <StatusBarColor />
-    <ButtomHeader>
-      <IconHeader icon={icon} />
-    </ButtomHeader>
-    <HeaderTitle>{title}</HeaderTitle>
-    {!!price && <Title>{price}</Title>}
-    {showButtomCart && (
-      <ButtomCart>
-        <IconHeader icon="shopping-bag" />
-        <IconBadge>
-          <CountItems>{cartItems}</CountItems>
-        </IconBadge>
-      </ButtomCart>
-    )}
-  </Container>
-);
+function Header({
+  title, icon, cartItems, showButtomCart, price, navigation,
+}) {
+  function handleNavigation() {
+    console.tron.log(navigation.state.routeName)
+    if (navigation.state.routeName !== 'Home') {
+      navigation.goBack();
+    }
+  }
+  return (
+    <Container showButtomCart={showButtomCart} price={price}>
+      <ImageHeader />
+      <StatusBarColor />
+      <ButtomHeader onPress={handleNavigation}>
+        <IconHeader icon={icon} />
+      </ButtomHeader>
+      <HeaderTitle>{title}</HeaderTitle>
+      {!!price && <Title>{price}</Title>}
+      {showButtomCart && (
+        <ButtomCart>
+          <IconHeader icon="shopping-bag" />
+          <IconBadge>
+            <CountItems>{cartItems}</CountItems>
+          </IconBadge>
+        </ButtomCart>
+      )}
+    </Container>
+  );
+}
 
 Header.defaultProps = {
   showButtomCart: false,

@@ -66,23 +66,12 @@ export const TextError = styled.Text`
   color: #ff5959;
   letter-spacing: 0;
   text-align: left;
-  align-self: flex-start;
+  align-self: ${props => (props.center ? 'center' : 'flex-start')};
 `;
 
 const spin = styled(Icon).attrs({
   name: 'spinner',
   size: 24,
-})`
-  animation: spin infinite;
-
-  @keyframes spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-`;
+})``;
 
 export const Spinner = Animated.createAnimatedComponent(spin);

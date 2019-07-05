@@ -19,7 +19,7 @@ export const Lista = styled.FlatList.attrs({
   },
 })``;
 
-export const Wrapper = styled.TouchableOpacity.attrs({
+export const ButtonItem = styled.TouchableOpacity.attrs({
   activeOpacity: 0.7,
 })`
   background-color: #fff;

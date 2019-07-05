@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import api from '~/services/api';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import Spinner from '~/components/UI/Spinner'
+import Spinner from '~/components/UI/Spinner';
 import PropTypes from 'prop-types';
+import DropdownAlert from 'react-native-dropdownalert';
 
 import {
   Container,
@@ -21,8 +22,8 @@ const schema = Yup.object().shape({
     .email()
     .required('Campo email é requerido'),
   password: Yup.string()
-    .required()
-    .min(6),
+    .required('Campo de senha é requerido.')
+    .min(6, 'Mínimo 06 caracteres'),
 });
 
 const initialValues = {
@@ -32,16 +33,27 @@ const initialValues = {
 };
 
 function Signup({ navigation }) {
-  const [loading, setLoading] = useState(false)
-  async function handleSubmitForm(data) {
-    setLoading(true)
+  const [loading, setLoading] = useState(false);
+  
+  async function handleSubmitForm(params) {
+    setLoading(true);
+    try {
+      await api.post('cadastrar/user', params);
+      dropDownAlertRef.alertWithType('success', 'Success', 'Cadastro realizado com sucesso!');
+    } catch (err) {
+      const { data } = err.response;
+      dropDownAlertRef.alertWithType('error', 'Error', data.error || 'Não foi possível cadastrar');
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
     <Container>
       <Wrapper>
+        <DropdownAlert ref={ref => (dropDownAlertRef = ref)} />
         <Logo />
-        <Formik initialValues={initialValues} onSubmit={handleSubmitForm}>
+        <Formik initialValues={initialValues} onSubmit={handleSubmitForm} validationSchema={schema}>
           {({
             name, email, password, handleChange, handleSubmit, errors, touched,
           }) => (

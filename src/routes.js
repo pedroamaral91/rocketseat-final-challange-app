@@ -12,22 +12,21 @@ import MyOrders from '~/pages/MyOrders';
 
 const Routes = createAppContainer(
   createSwitchNavigator({
-    Signup,
     Login,
-    Home,
-    FoodTypes,
-    FoodSize,
-    Cart,
-    FinishOrder,
-    MyOrders,
-    // Logged: createStackNavigator(
-    //   {
-    //     Home,
-    //   },
-    //   {
-    //     headerMode: 'none',
-    //   },
-    // ),
+    Signup,
+    Logged: createStackNavigator(
+      {
+        Home,
+        FoodTypes,
+        FoodSize,
+        Cart,
+        FinishOrder,
+        MyOrders,
+      },
+      {
+        headerMode: 'none',
+      },
+    ),
   }),
 );
 

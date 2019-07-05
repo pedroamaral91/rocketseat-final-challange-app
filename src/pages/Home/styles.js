@@ -1,6 +1,5 @@
 import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import ImageIcon from '~/assets/Tipos/pizza.png';
 
 export const Container = styled.View`
   flex: 1;
@@ -8,14 +7,14 @@ export const Container = styled.View`
 
 export const FoodTypes = styled.FlatList``;
 
-export const Image = styled.Image.attrs({
-  source: ImageIcon,
-})`
+export const Image = styled.Image`
   width: 80px;
   height: 80px;
 `;
 
-export const Item = styled.TouchableOpacity`
+export const Item = styled.TouchableOpacity.attrs({
+  activeOpacity: 0.7,
+})`
   background-color: #fff;
   flex-direction: row;
   flex-wrap: wrap;
